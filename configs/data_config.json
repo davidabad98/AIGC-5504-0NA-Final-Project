@@ -1,0 +1,15 @@
+{
+    "raw_file_name": "customer_churn_dataset-training-master.csv",
+    "processed_file_name": "processed_customer_churn-training.csv",
+    "target_column": "Churn",
+    "exclude_columns": [
+        "CustomerID"
+    ],
+    "remove_outliers": true,
+    "outlier_method": "IQR",
+    "outlier_threshold": 1.5,
+    "validation_size": 0.15,
+    "random_state": 42,
+    "scaling_method": "standard",
+    "categorical_encoding": "onehot"
+}
