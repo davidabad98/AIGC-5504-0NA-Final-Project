@@ -63,6 +63,7 @@ class ChurnDataPreprocessor:
         self.label_encoder = None
         self.numerical_scaler = StandardScaler()
         self.feature_names = None
+        self.original_feature_order = None
 
     def fit(self, df: pd.DataFrame) -> "ChurnDataPreprocessor":
         """
@@ -75,6 +76,11 @@ class ChurnDataPreprocessor:
             ChurnDataPreprocessor: Self instance
         """
         logger.info("Starting preprocessing pipeline fitting")
+
+        # Save original feature order from the columns that are transformed.
+        self.original_feature_order = list(
+            df.drop(columns=[self.target] + self.exclude_cols).columns
+        )
 
         # Identify feature types
         self._identify_feature_types(df)
